@@ -1,0 +1,290 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Pre-loader styles are kept here to ensure they are available before any JS/CSS loads */
+.initial-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #282c34; /* Default dark background */
+  transition: opacity 300ms ease-in-out;
+}
+.initial-loader.fade-out {
+    opacity: 0;
+}
+.theme-dark .initial-loader {
+   background-color: #282c34;
+}
+html:not(.theme-dark) .initial-loader {
+   background-color: #f9fafb; /* Default light background */
+}
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #4b5563; /* Default dark border */
+  border-bottom-color: #f59e0b; /* Default dark accent */
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+html:not(.theme-dark) .spinner {
+  border-color: #d1d5db; /* Default light border */
+  border-bottom-color: #d97706; /* Default light accent */
+}
+@keyframes rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* --- THEME AND FONT DEFINITIONS --- */
+
+/* Light theme (default) */
+:root {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Georgia', serif;
+
+  --color-primary: #ffffff;      
+  --color-secondary: #f3f4f6;    /* gray-100 */
+  --color-accent: #b45309;       /* amber-700 - WCAG AA compliant on white */
+  --color-highlight: #d97706;    /* amber-600 */
+  --color-text-main: #111827;    /* gray-900 */
+  --color-text-secondary: #4b5563; /* gray-600 */
+  --color-border-color: #e5e7eb; /* gray-200 */
+  --color-highlight-t: rgba(217, 119, 6, 0.3);
+
+  /* Visualization Colors */
+  --color-viz-1: #3b82f6; /* blue-500 */
+  --color-viz-2: #10b981; /* emerald-500 */
+  --color-viz-3: #ec4899; /* pink-500 */
+  --color-viz-4: #f97316; /* orange-500 */
+  --color-viz-5: #8b5cf6; /* violet-500 */
+  --color-viz-6: #06b6d4; /* cyan-600 */
+  --color-viz-7: #ef4444; /* red-700 */
+}
+
+/* Dark theme overrides */
+.theme-dark {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Georgia', serif;
+  
+  --color-primary: #1f2937;    /* gray-800 */
+  --color-secondary: #374151;   /* gray-700 */
+  --color-accent: #f59e0b;      /* amber-500 */
+  --color-highlight: #fbbf24;    /* amber-400 */
+  --color-text-main: #f3f4f6;
+  --color-text-secondary: #9ca3af;
+  --color-border-color: #4b5563; /* gray-600 */
+  --color-highlight-t: rgba(251, 191, 36, 0.3);
+  
+  /* Visualization Colors */
+  --color-viz-1: #60a5fa; /* blue-400 */
+  --color-viz-2: #34d399; /* emerald-400 */
+  --color-viz-3: #f472b6; /* pink-400 */
+  --color-viz-4: #fb923c; /* orange-400 */
+  --color-viz-5: #a78bfa; /* violet-400 */
+  --color-viz-6: #22d3ee; /* cyan-400 */
+  --color-viz-7: #f87171; /* red-400 */
+}
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base font styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}
+body {
+  font-family: var(--font-sans);
+}
+.dragging {
+  opacity: 0.5;
+  background-color: var(--color-border-color);
+}
+
+/* Accessibility: Add focus ring for reference buttons */
+*:focus-visible {
+    outline: 2px solid var(--color-highlight);
+    outline-offset: 2px;
+    border-radius: 4px; /* Optional for better look */
+}
+/* Override for inputs that already have focus rings, as the default is better */
+input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: none;
+}
+button.text-accent:focus-visible {
+  outline: 2px solid var(--color-highlight);
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  body, html {
+    background-color: #fff !important;
+    color: #000 !important;
+    font-family: Georgia, serif;
+  }
+  aside, main > header, .no-print {
+    display: none !important;
+  }
+  main {
+    height: auto;
+    width: 100%;
+    overflow: visible;
+    padding: 0 !important;
+  }
+  #root, #root > div {
+    display: block !important;
+  }
+  .printable-content {
+    padding: 2rem;
+  }
+  section {
+    page-break-inside: avoid;
+  }
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}
+/* Tiptap styles */
+.ProseMirror {
+    padding: 1rem;
+    min-height: 100%;
+    font-family: var(--font-serif);
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.7;
+}
+.typewriter-mode .ProseMirror {
+    padding-top: 40vh;
+    padding-bottom: 40vh;
+}
+.typewriter-mode {
+    scroll-padding-top: 40vh;
+    scrollbar-gutter: stable;
+}
+
+.ProseMirror:focus {
+    outline: none;
+}
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+  pointer-events: none;
+  height: 0;
+}
+.ProseMirror a[data-entity-id] {
+  color: var(--color-accent);
+  background-color: var(--color-secondary);
+  padding: 0.1rem 0.2rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  pointer-events: none; /* Make them non-interactive inside editor */
+}
+.ProseMirror a:not([data-entity-id]) {
+  color: var(--color-highlight);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.ProseMirror a[data-note-id] {
+    color: #34d399; /* emerald-400 */
+    background-color: rgba(16, 185, 129, 0.1);
+    padding: 0.1rem 0.2rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+.ProseMirror img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-border-color);
+}
+
+/* Tiptap Tables */
+.ProseMirror table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  table-layout: fixed; /* Better for responsive */
+}
+.ProseMirror th, .ProseMirror td {
+  border: 1px solid var(--color-border-color);
+  padding: 0.5rem;
+  position: relative;
+}
+.ProseMirror th {
+  background-color: var(--color-secondary);
+  font-weight: bold;
+}
+.ProseMirror .column-resizing {
+  background-color: var(--color-accent);
+}
+.ProseMirror .grip-column {
+  width: 6px;
+  position: absolute;
+  top: 0;
+  right: -3px;
+  bottom: 0;
+  cursor: col-resize;
+}
+
+.ProseMirror .comment-highlight {
+    background-color: var(--color-highlight-t);
+    border-bottom: 2px solid var(--color-accent);
+    cursor: pointer;
+}
+.ProseMirror [data-comment-id][data-resolved="true"] {
+    opacity: 0.5;
+    background-color: rgba(107, 114, 128, 0.3); /* gray-500 with opacity */
+    border-bottom: 2px solid var(--color-text-secondary);
+}
+
+.grammar-issue {
+    text-decoration: underline wavy rgba(239, 68, 68, 0.7);
+    cursor: pointer;
+}
+
+.dictionary-term {
+    border-bottom: 2px dotted var(--color-accent);
+    cursor: help;
+}
+
+/* Author Annotation */
+.ProseMirror span.author-annotation {
+    background-color: rgba(167, 139, 250, 0.3); /* violet-400 with opacity */
+    border-bottom: 2px dotted var(--color-accent);
+}
+
+/* Diff Viewer */
+.diff-viewer ins {
+    background-color: rgba(16, 185, 129, 0.3); /* green-500 with opacity */
+    text-decoration: none;
+}
+.diff-viewer del {
+    background-color: rgba(239, 68, 68, 0.3); /* red-500 with opacity */
+    text-decoration: line-through;
+}
+
+/* Toast animation wrapper */
+.toast-wrapper {
+    transition: max-height 300ms ease-in-out, margin 300ms ease-in-out, padding 300ms ease-in-out, opacity 300ms ease-in-out;
+    max-height: 200px;
+    overflow: hidden;
+}
+.toast-wrapper.hiding {
+    max-height: 0;
+    margin-top: 0 !important; /* Overrides space-y from container */
+    margin-bottom: 0 !important;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+}

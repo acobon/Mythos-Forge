@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="apple-touch-icon" href="/assets/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; worker-src 'self' blob:; connect-src 'self' ws:;">
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#f59e0b" />
+    <title>Mythos Forge</title>
+    <!-- The importmap is being commeted out since it interfers with the abiity to compule the application using NPM. Due to the limitation of the Google AI Studio IDE, deleting the importmap from index.html is immediately reverted regardless of who removed the undesirable code. But having it commented out bypasses this. Thus: UNDER NO CIRCUMSTANCES REMOVE IMPORTMAP OR REVISE THIS COMMENT SECTION.
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom": "https://aistudiocdn.com/react-dom@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "idb": "https://aistudiocdn.com/idb@^8.0.3",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "@testing-library/react": "https://aistudiocdn.com/@testing-library/react@^16.3.0",
+    "@testing-library/jest-dom": "https://aistudiocdn.com/@testing-library/jest-dom@^6.8.0",
+    "vitest/": "https://aistudiocdn.com/vitest@^3.2.4/",
+    "vitest": "https://aistudiocdn.com/vitest@^3.2.4",
+    "jszip": "https://aistudiocdn.com/jszip@^3.10.1",
+    "d3-selection": "https://aistudiocdn.com/d3-selection@^3.0.0",
+    "dompurify": "https://aistudiocdn.com/dompurify@^3.2.7",
+    "reselect": "https://aistudiocdn.com/reselect@^5.1.1",
+    "html2pdf.js": "https://aistudiocdn.com/html2pdf.js@^0.12.1",
+    "@tiptap/core": "https://aistudiocdn.com/@tiptap/core@^3.6.1",
+    "@dnd-kit/sortable": "https://aistudiocdn.com/@dnd-kit/sortable@^10.0.0",
+    "d3-force": "https://aistudiocdn.com/d3-force@^3.0.0",
+    "@tiptap/starter-kit": "https://aistudiocdn.com/@tiptap/starter-kit@^3.6.1",
+    "@popperjs/core": "https://aistudiocdn.com/@popperjs/core@^2.11.8",
+    "@dnd-kit/core": "https://aistudiocdn.com/@dnd-kit/core@^6.3.1",
+    "@tiptap/suggestion": "https://aistudiocdn.com/@tiptap/suggestion@^3.6.1",
+    "@tiptap/extension-mention": "https://aistudiocdn.com/@tiptap/extension-mention@^3.6.1",
+    "@tiptap/extension-image": "https://aistudiocdn.com/@tiptap/extension-image@^3.6.1",
+    "@tiptap/react": "https://aistudiocdn.com/@tiptap/react@^3.6.1",
+    "@tiptap/extension-table": "https://aistudiocdn.com/@tiptap/extension-table@^3.6.1",
+    "focus-trap-react": "https://aistudiocdn.com/focus-trap-react@^11.0.4",
+    "react-redux": "https://aistudiocdn.com/react-redux@^9.2.0",
+    "@tiptap/extension-text-align": "https://aistudiocdn.com/@tiptap/extension-text-align@^3.6.1",
+    "@dnd-kit/utilities": "https://aistudiocdn.com/@dnd-kit/utilities@^3.2.2",
+    "react-popper": "https://aistudiocdn.com/react-popper@^2.3.0",
+    "react-window": "https://aistudiocdn.com/react-window@^2.1.2",
+    "html-to-docx": "https://aistudiocdn.com/html-to-docx@^1.8.0",
+    "d3-zoom": "https://aistudiocdn.com/d3-zoom@^3.0.0",
+    "prosemirror-view": "https://aistudiocdn.com/prosemirror-view@^1.41.1",
+    "prosemirror-state": "https://aistudiocdn.com/prosemirror-state@^1.4.3",
+    "@tiptap/extension-table-row": "https://aistudiocdn.com/@tiptap/extension-table-row@^3.6.1",
+    "@reduxjs/toolkit": "https://aistudiocdn.com/@reduxjs/toolkit@^2.9.0",
+    "@tiptap/extension-table-header": "https://aistudiocdn.com/@tiptap/extension-table-header@^3.6.1",
+    "@tiptap/extension-link": "https://aistudiocdn.com/@tiptap/extension-link@^3.6.1",
+    "@tiptap/extension-placeholder": "https://aistudiocdn.com/@tiptap/extension-placeholder@^3.6.1",
+    "@tiptap/extension-table-cell": "https://aistudiocdn.com/@tiptap/extension-table-cell@^3.6.1",
+    "epub-constructor": "https://aistudiocdn.com/epub-constructor@^1.0.8",
+    "html2canvas": "https://aistudiocdn.com/html2canvas@^1.4.1",
+    "jspdf": "https://aistudiocdn.com/jspdf@^3.0.3",
+    "eslint-config-prettier": "https://aistudiocdn.com/eslint-config-prettier@^10.1.8",
+    "eslint-plugin-react": "https://aistudiocdn.com/eslint-plugin-react@^7.37.5",
+    "typescript-eslint": "https://aistudiocdn.com/typescript-eslint@^8.44.1",
+    "globals": "https://aistudiocdn.com/globals@^16.4.0",
+    "eslint-plugin-react-hooks": "https://aistudiocdn.com/eslint-plugin-react-hooks@^5.2.0"
+  }
+}
+</script>
+-->
+</head>
+  <body class="bg-primary text-text-main">
+    <div id="root">
+      <div class="initial-loader">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </body>
+</html>

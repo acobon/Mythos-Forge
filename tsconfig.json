@@ -1,0 +1,38 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "noImplicitAny": true,
+        "module": "esnext",
+        "target": "es6",
+        "jsx": "react-jsx",
+        "allowJs": true,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "strict": true,
+        "lib": ["dom", "dom.iterable", "esnext", "WebWorker"],
+        "types": ["vitest/globals"]
+    },
+    "include": [
+        "*.ts",
+        "*.tsx",
+        "*.js",
+        "components",
+        "data",
+        "hooks",
+        "services",
+        "state",
+        "types"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "**/*.test.ts",
+        "**/*.test.tsx",
+        "webpack.config.js",
+        "tailwind.config.js",
+        "postcss.config.js",
+        "vitest.config.ts",
+        "vite.config.ts",
+        "assets"
+    ]
+}
